@@ -1,3 +1,9 @@
+body {
+    /* background-image: url("https://images.unsplash.com/photo-1547129607-cb70df5e9b4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"); */
+    background-image: url("https://images.unsplash.com/photo-1547499417-61a435d27cb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80");
+    /* background-image: url("https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80"); */
+}
+
 #header-div {
     top:10%;
     left:50%;
@@ -17,15 +23,43 @@
     vertical-align:middle;
 }
 
+#main {
+    top:10%;
+    left:50%;
+    width:100px;
+    height:50px;
+    color:white;
+    position:absolute;
+    text-align:center;
+    background-color:#8a3324;
+    margin: -25px 0 0 -31px;
+}
+
+#main h1 {
+    font-size: 28px;
+    margin:auto;
+    line-height:50px;
+    vertical-align:middle;
+}
+
+/* #item-card-container {
+    position:absolute;
+} */
+
 .card {
+    /* font-size: 12px; */
+    font-size: 2vw;
     text-align: center;
-    border: #8a3324 solid 2px;
+    border: #8a3324 solid 1px;
     padding: 1rem;
     width: 15rem;
     height: 25rem;
     display: inline-grid;
     margin: 1rem 2rem;
-    box-shadow: 3px 4px grey
+    background: whitesmoke;
+    color: black;
+    box-shadow: 4px 5px grey
+    /* overflow: hidden;        doesn't work */
   }
   
   .item-image {
@@ -36,7 +70,7 @@
   
   button {
     position: relative;
-    background-color: #e04b52;
+    background-color: #8a3324;
     border: none;
     border-radius: 5px;
     height: 3rem;

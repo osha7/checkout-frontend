@@ -6,12 +6,12 @@ const divAddItem = document.createElement('div')
     divAddItem.id = 'add-new-item'
     main.appendChild(divAddItem)
 
-const divAddHeader = document.createElement('div')
-    divAddHeader.id = 'header-div'
-    main.appendChild(divAddHeader)
+// const divAddHeader = document.createElement('div')
+//     divAddHeader.id = 'header-div'
+//     main.appendChild(divAddHeader)
 const addHeader = document.createElement('h1')
     addHeader.innerText = 'Ware'
-    divAddHeader.appendChild(addHeader)
+    main.appendChild(addHeader)
 
 const divItemCard = document.createElement('div')
     divItemCard.id = 'item-card-container'
@@ -22,30 +22,49 @@ const divItemCard = document.createElement('div')
 //     <inn
 //     `
 // }
+const itemUrl = "http://localhost:3000/items"
+// let seePromiseFromFetch = fetch(itemUrl)
 
 document.addEventListener('DOMContentLoaded', function(e) {
-    fetch("http://localhost:3000/items")
-        .then(function(response) {
-            return response.json()
+    // debugger
+    fetch(itemUrl)
+        .then(function(resp) {
+            return resp.json()
         })
+        // .then(console.log)
+        
         .then(function(json) {
-            addItemCard(json);
+            json.forEach(addItemCard)
+            // addItemCard(json);
+            // need to .map on this json object
         })
+        .catch(() => alert("Can’t access " + itemUrl + " response. Blocked by browser?"))
 })
 
 function addItemCard(item) {
     let cardContainer = document.getElementById('item-card-container')
+    // cardContainer.innerHTML += `
+    //     <div id=${item['id']} class="card">
+    //     <img src=${item['img_source']} class="item-image"/>
+    //     <h2>${item['name']}</h2>
+    //     <p>Price: $${item['price']} - Availability: ${item['item_count']} <br>
+    //     ${item['description']}</p>
+    //     <button class="add-to-cart" data-item=${item.id}>Add Item To Cart</button>
+    //     </div>
+    // `
     cardContainer.innerHTML += `
-        <div class="card">
-        <img src=${item['img_source']} class="item-image" />
-        <h2 id=${item['id']}></h2>
-        <p>Price: $${item['price']}</p>
-        <p>Availability: ${item['item_count']}</p>
-        <p>${item['description']}</p>
-        <button class="add-to-cart">Add Item To Cart</button>
+        <div id=${item.id} class="card">
+        <img src=${item.img_source} class="item-image"/>
+        <h2>${item.name}</h2>
+        <p>Price: $${item.price} - Availability: ${item['item_count']} <br>
+        ${item.description}</p>
+        <button class="add-to-cart" data-item=${item.id}>Add Item To Cart</button>
         </div>
+        
     `
 }
+
+
 
 
 
