@@ -93,39 +93,50 @@ const cartUrl = "http://localhost:3000/create-or-return-cart"
 const showCurrentCart = function() {
     fetch(cartUrl)
         .then(resp => resp.json())
-        .then(json => renderCart(json))
+        .then(json => renderCartPage(json))
 }
 
-function renderCart(cart) {
+function renderCartPage(cart) {
     // debugger
     main.innerHTML += `
     <div id=cart-${cart.id} class="cart-container">
     <h1>Cart</h1>
-        <div class="cart-card">
-            <div class="cart-items">
-                <table id="item-table" style="width:100%">
-                    <tr>
-                        <th>Item Name</th>
-                        <th>Quantity</th> 
-                        <th>Price</th>
-                    </tr>
-                </table>
+        <div id="container" class="cart-card-container">
+            <div id="card" class="cart-card">
+                <div class="cart-items">
+                    <table id="item-table" style="width:100%">
+                        <tr style="font-size: 22px; text-decoration: underline;">
+                            <th>Item Name</th>
+                            <th>#</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
+        <div id="button" class="shop-return">
+        <button class="return-to-shop">Shop</button>
     </div>
     `
     let itemsTable = document.getElementById('item-table')
     let cartItemsArray = cart.items
     cartItemsArray.forEach( item => {
         itemsTable.innerHTML += `
+            <br></br>
             <tr>
                 <td>${item.name}</td>
                 <td>${item.quantity}</td>
                 <td>$${item.price}</td>
+                <td><button id="remove-button" data-description="item-${item.id}" style="font-size: 6px; height: 8px;">X</button></td>
             </tr>
         `
     })
 }
+
+
+
+
 
 
 
@@ -144,3 +155,4 @@ function renderCart(cart) {
 //     }
 //   }
 
+document.addEventListener('click', )

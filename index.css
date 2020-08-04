@@ -136,6 +136,18 @@ body {
     }
     
   /* ----------shopping cart---------- */
+  /* .cart-card-container {
+    display: flex;
+    justify-content: center;
+    /* align-items: center;  */
+  /* } */ 
+  
+  /* div#container.cart-card-container {
+    height: 100%;
+    width: 100%;
+
+  } */
+
   .cart-card {
     font-size: 12px;
     text-align: center;
@@ -151,7 +163,7 @@ body {
   }
 
   .cart-card h1 {
-      font-size: 18px
+      font-size: 24px
   }
 
     /* ------------------------- */
