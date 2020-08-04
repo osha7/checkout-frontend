@@ -2,36 +2,22 @@
 
 const main = document.querySelector('#main')
     main.innerHTML += `
-    <div id='shopping-container'><div>
+    <div id='shopping-container'>
+        <div id="header-div">
+            <h1>Ware</h1>
+        </div>
+        <div class="shopping-cart-counter">
+            <div class='shopping-cart-image'>
+                <i class='fas fa-shopping-bag' style='font-size:36px'></i>
+            </div>
+            <div class='cart-counter'>1</div>
+        </div>
+        <div id="add-new-item"></div>
+        <div id="item-card-container"></div>
+    </div>
     `
 const shoppingContainer = document.getElementById('shopping-container')
 
-const divAddHeader = document.createElement('div')
-    divAddHeader.id = 'header-div'
-    shoppingContainer.appendChild(divAddHeader)
-const addHeader = document.createElement('h1')
-    addHeader.innerText = 'Ware'
-    divAddHeader.appendChild(addHeader)
-
-const cartImageContainer = document.createElement('div')
-    cartImageContainer.className = 'shopping-cart-counter'
-    shoppingContainer.appendChild(cartImageContainer)
-    cartImageContainer.innerHTML += `
-    <div class='shopping-cart-image'></div>
-    <div class='cart-counter'>1</div>
-    `
-const cartImage = document.getElementsByClassName('shopping-cart-image')[0]
-    cartImage.innerHTML += `
-    <i class='fas fa-shopping-bag' style='font-size:36px'></i>
-    `
-
-const divAddItem = document.createElement('div')
-    divAddItem.id = 'add-new-item'
-    shoppingContainer.appendChild(divAddItem)
-
-const divItemCard = document.createElement('div')
-    divItemCard.id = 'item-card-container'
-    shoppingContainer.appendChild(divItemCard)
 
 // function addItemDiv(e) {
 //     divAddItem.innerHTML = `
@@ -41,8 +27,10 @@ const divItemCard = document.createElement('div')
 const itemUrl = "http://localhost:3000/items"
 // let seePromiseFromFetch = fetch(itemUrl)
 
-document.addEventListener('DOMContentLoaded', function(e) {
+document.addEventListener('DOMContentLoaded', fetchAllItems)
     // debugger
+
+function fetchAllItems() {
     fetch(itemUrl)
         .then(function(resp) {
             return resp.json()
@@ -55,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             // need to .map on this json object
         })
         .catch(() => alert("Can’t access " + itemUrl + " response. Blocked by browser?"))
-})
+}
 
 function addItemCard(item) {
     let cardContainer = document.getElementById('item-card-container')
@@ -72,7 +60,7 @@ function addItemCard(item) {
 
 // let itemCard = document.querySelector('.card')
 
-divItemCard.addEventListener('click', function(e) {
+document.addEventListener('click', function(e) {
     if (e.target.className == "add-to-cart") {
         // console.log(e.target.dataset.item)
         let itemCard = document.getElementById(`item-${e.target.dataset.item}-card`)
@@ -81,7 +69,7 @@ divItemCard.addEventListener('click', function(e) {
 
 })
 
-cartImageContainer.addEventListener('click', function(e) {
+document.addEventListener('click', function(e) {
     if (e.target.className == "fas fa-shopping-bag") {
     let shoppingArea = document.getElementById('shopping-container')
     shoppingArea.innerHTML = " "
@@ -134,7 +122,15 @@ function renderCartPage(cart) {
     })
 }
 
-
+document.addEventListener('click', function(e) {
+    if (e.target.className == "return-to-shop") {
+        // debugger
+        let cartArea = document.getElementsByClassName('cart-container')[0]
+        cartArea.innerHTML = " "
+        
+        fetchAllItems()
+    }
+})
 
 
 
@@ -155,4 +151,3 @@ function renderCartPage(cart) {
 //     }
 //   }
 
-document.addEventListener('click', )
