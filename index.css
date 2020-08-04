@@ -14,6 +14,9 @@ body {
     text-align:center;
     background-color:#8a3324;
     margin: -25px 0 0 -31px;
+    /* padding: top right bottom left; */
+    /* padding: ; */
+    border-radius: 2px;
 }
 
 #header-div h1 {
@@ -21,43 +24,70 @@ body {
     margin:auto;
     line-height:50px;
     vertical-align:middle;
+    border-radius: 2px;
+}
+/* ----------------- */
+
+.shopping-cart-counter {
+    display: inline-block;
+    position: relative;
+    /* background: #723636; */
+    padding: 15px;
+    right: 0px;
+  }
+  
+  .shopping-cart-image {
+    width: 55px;
+    height: 50px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    /* background: #D58E32; */
+    position: relative;
+  }
+  
+  i {
+    margin-right: 5px;
+    color: black;
+  }
+  
+  .cart-counter {
+    padding: 0 4px;
+    height: 37px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+    position: absolute;
+    top: 60%;
+    left: 39%;
+    transform: translate(0%, -50%);
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+  }
+
+/* ----------------- */
+#item-card-container {
+    margin: 10rem 2rem;
 }
 
-#main {
-    top:10%;
-    left:50%;
-    width:100px;
-    height:50px;
-    color:white;
-    position:absolute;
-    text-align:center;
-    background-color:#8a3324;
-    margin: -25px 0 0 -31px;
-}
-
-#main h1 {
-    font-size: 28px;
-    margin:auto;
-    line-height:50px;
-    vertical-align:middle;
-}
-
-/* #item-card-container {
-    position:absolute;
-} */
 
 .card {
     /* font-size: 12px; */
     font-size: 2vw;
     text-align: center;
     border: #8a3324 solid 1px;
+    border-radius: 5px;
     padding: 1rem;
     width: 15rem;
     height: 25rem;
     display: inline-grid;
     margin: 1rem 2rem;
     background: whitesmoke;
-    color: black;
     box-shadow: 4px 5px grey
     /* overflow: hidden;        doesn't work */
   }
@@ -66,16 +96,62 @@ body {
     justify-self: center;
     height: 12rem;
     width: auto;
+    border-radius: 2px;
   }
   
   button {
     position: relative;
     background-color: #8a3324;
     border: none;
-    border-radius: 5px;
-    height: 3rem;
+    border-radius: 2px;
+    height: 2rem;
     width: max-content;
     color: whitesmoke;
-    font-size: 18px;
+    font-size: 12px;
     justify-self: center;
   }
+
+    /* --------CART 'PAGE'---------- */
+    .cart-container  {
+        top:10%;
+        left:50%;
+        width:100px;
+        height:50px;
+        position:absolute;
+        text-align:center;
+        background-color:#8a3324;
+        margin: -25px 0 0 -31px;
+        /* padding: top right bottom left; */
+        /* padding: ; */
+        border-radius: 2px;
+    }
+    
+    .cart-container h1 {
+        color:whitesmoke;
+        font-size: 28px;
+        margin:auto;
+        line-height:50px;
+        vertical-align:middle;
+        border-radius: 2px;
+    }
+    
+  /* ----------shopping cart---------- */
+  .cart-card {
+    font-size: 12px;
+    text-align: center;
+    border: #8a3324 solid 5px;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 20rem;
+    height: 30rem;
+    display: inline-grid;
+    margin: 1rem 2rem;
+    background: whitesmoke;
+    box-shadow: 4px 5px grey
+  }
+
+  .cart-card h1 {
+      font-size: 18px
+  }
+
+    /* ------------------------- */

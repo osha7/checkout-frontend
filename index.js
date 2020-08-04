@@ -1,21 +1,37 @@
-
+// document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
 
 const main = document.querySelector('#main')
+    main.innerHTML += `
+    <div id='shopping-container'><div>
+    `
+const shoppingContainer = document.getElementById('shopping-container')
+
+const divAddHeader = document.createElement('div')
+    divAddHeader.id = 'header-div'
+    shoppingContainer.appendChild(divAddHeader)
+const addHeader = document.createElement('h1')
+    addHeader.innerText = 'Ware'
+    divAddHeader.appendChild(addHeader)
+
+const cartImageContainer = document.createElement('div')
+    cartImageContainer.className = 'shopping-cart-counter'
+    shoppingContainer.appendChild(cartImageContainer)
+    cartImageContainer.innerHTML += `
+    <div class='shopping-cart-image'></div>
+    <div class='cart-counter'>1</div>
+    `
+const cartImage = document.getElementsByClassName('shopping-cart-image')[0]
+    cartImage.innerHTML += `
+    <i class='fas fa-shopping-bag' style='font-size:36px'></i>
+    `
 
 const divAddItem = document.createElement('div')
     divAddItem.id = 'add-new-item'
-    main.appendChild(divAddItem)
-
-// const divAddHeader = document.createElement('div')
-//     divAddHeader.id = 'header-div'
-//     main.appendChild(divAddHeader)
-const addHeader = document.createElement('h1')
-    addHeader.innerText = 'Ware'
-    main.appendChild(addHeader)
+    shoppingContainer.appendChild(divAddItem)
 
 const divItemCard = document.createElement('div')
     divItemCard.id = 'item-card-container'
-    main.appendChild(divItemCard)
+    shoppingContainer.appendChild(divItemCard)
 
 // function addItemDiv(e) {
 //     divAddItem.innerHTML = `
@@ -43,28 +59,88 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 function addItemCard(item) {
     let cardContainer = document.getElementById('item-card-container')
-    // cardContainer.innerHTML += `
-    //     <div id=${item['id']} class="card">
-    //     <img src=${item['img_source']} class="item-image"/>
-    //     <h2>${item['name']}</h2>
-    //     <p>Price: $${item['price']} - Availability: ${item['item_count']} <br>
-    //     ${item['description']}</p>
-    //     <button class="add-to-cart" data-item=${item.id}>Add Item To Cart</button>
-    //     </div>
-    // `
     cardContainer.innerHTML += `
-        <div id=${item.id} class="card">
-        <img src=${item.img_source} class="item-image"/>
-        <h2>${item.name}</h2>
-        <p>Price: $${item.price} - Availability: ${item['item_count']} <br>
-        ${item.description}</p>
-        <button class="add-to-cart" data-item=${item.id}>Add Item To Cart</button>
+        <div id=item-${item.id}-card class="card">
+            <img src=${item.img_source} class="item-image"/>
+            <h2>${item.name}</h2>
+            <p>Price: $${item.price} - Availability: ${item['item_count']} <br>
+                ${item.description}</p>
+            <button class="add-to-cart" data-item=${item.id}>Add Item To Cart</button>
         </div>
-        
     `
+}
+
+// let itemCard = document.querySelector('.card')
+
+divItemCard.addEventListener('click', function(e) {
+    if (e.target.className == "add-to-cart") {
+        // console.log(e.target.dataset.item)
+        let itemCard = document.getElementById(`item-${e.target.dataset.item}-card`)
+        console.log(itemCard)
+    }
+
+})
+
+cartImageContainer.addEventListener('click', function(e) {
+    if (e.target.className == "fas fa-shopping-bag") {
+    let shoppingArea = document.getElementById('shopping-container')
+    shoppingArea.innerHTML = " "
+    showCurrentCart()
+    }
+})
+
+const cartUrl = "http://localhost:3000/create-or-return-cart"
+const showCurrentCart = function() {
+    fetch(cartUrl)
+        .then(resp => resp.json())
+        .then(json => renderCart(json))
+}
+
+function renderCart(cart) {
+    // debugger
+    main.innerHTML += `
+    <div id=cart-${cart.id} class="cart-container">
+    <h1>Cart</h1>
+        <div class="cart-card">
+            <div class="cart-items">
+                <table id="item-table" style="width:100%">
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Quantity</th> 
+                        <th>Price</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    `
+    let itemsTable = document.getElementById('item-table')
+    let cartItemsArray = cart.items
+    cartItemsArray.forEach( item => {
+        itemsTable.innerHTML += `
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.quantity}</td>
+                <td>$${item.price}</td>
+            </tr>
+        `
+    })
 }
 
 
 
+// ADDING TASKS (task lister lite)
+//event listener (for adding list items):
 
+// function createNewTask(e) {
+//     e.preventDefault()
+//     let input = taskDescription;
+//     tasks.innerHTML += `<li>${input.value} <button id="remove-button" data-description="${input.value}">X</button></li>`;
+//     event.target.reset()
+//   }
+// function removeTaskButton(e) {
+//     if ( e.target.id == "remove-button") {
+//       e.target.parentElement.remove();
+//     }
+//   }
 
