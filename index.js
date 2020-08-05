@@ -1,4 +1,6 @@
 // document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
+const itemUrl = "http://localhost:3000/items"
+const cartUrl = "http://localhost:3000/create-or-return-cart"
 
 const main = document.querySelector('#main')
     main.innerHTML += `
@@ -16,18 +18,11 @@ const main = document.querySelector('#main')
         <div id="item-card-container"></div>
     </div>
     `
-const shoppingContainer = document.getElementById('shopping-container')
-
-
-// function addItemDiv(e) {
-//     divAddItem.innerHTML = `
-//     <inn
-//     `
-// }
-const itemUrl = "http://localhost:3000/items"
+    
 // let seePromiseFromFetch = fetch(itemUrl)
 
 document.addEventListener('DOMContentLoaded', fetchAllItems)
+document.addEventListener('DOMContentLoaded', fetchCurrentCart)
     // debugger
 
 function fetchAllItems() {
@@ -58,16 +53,46 @@ function addItemCard(item) {
     `
 }
 
-// let itemCard = document.querySelector('.card')
+function fetchCurrentCart () {
+    fetch(cartUrl)
+        .then(resp => resp.json())
+        // debugger
+        // .then(json => (json))
+        .then(function(json) {
+            let shoppingCartCounter = document.getElementsByClassName('cart-counter')[0]
+            shoppingCartCounter.innerText = `${json.items.length}`
+        })
+        .catch(() => alert("Can’t access " + cartUrl + " response."))
+}
+
+
 
 document.addEventListener('click', function(e) {
     if (e.target.className == "add-to-cart") {
+        debugger
         // console.log(e.target.dataset.item)
         let itemCard = document.getElementById(`item-${e.target.dataset.item}-card`)
-        console.log(itemCard)
-    }
+        // console.log(itemCard)
+        let itemPath = `http://localhost:3000/items/${e.target.dataset.item}`
+        function changeCartIdOfItem() {
+            fetch(itemPath, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                  },
+                body: JSON.stringify({
 
+                })
+            })
+            .then
+            .then
+            .catch
+        }
+    }
 })
+
+
 
 document.addEventListener('click', function(e) {
     if (e.target.className == "fas fa-shopping-bag") {
@@ -77,11 +102,12 @@ document.addEventListener('click', function(e) {
     }
 })
 
-const cartUrl = "http://localhost:3000/create-or-return-cart"
+
 const showCurrentCart = function() {
     fetch(cartUrl)
         .then(resp => resp.json())
         .then(json => renderCartPage(json))
+        .catch(() => alert("Can’t access " + cartUrl + " response."))
 }
 
 function renderCartPage(cart) {
