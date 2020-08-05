@@ -1,4 +1,5 @@
 document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
+
 const itemUrl = "http://localhost:3000/items"
 const cartUrl = "http://localhost:3000/create-or-return-cart"
 
@@ -12,7 +13,7 @@ const main = document.querySelector('#main')
             <div class='shopping-cart-image'>
                 <i class='fas fa-shopping-bag' style='font-size:36px'></i>
             </div>
-            <div class='cart-counter'>1</div>
+            <div class='cart-counter'></div>
         </div>
         <div id="add-new-item"></div>
         <div id="item-card-container"></div>
@@ -20,6 +21,7 @@ const main = document.querySelector('#main')
     `
 let itemCardContainerDiv = document.getElementById('item-card-container')
 let shoppingCartCounter = document.getElementsByClassName('cart-counter')[0] 
+let addToCartButton = document.getElementsByClassName('add-to-cart')[0]
 let shoppingCartId = 0
 // let seePromiseFromFetch = fetch(itemUrl)
 
@@ -72,12 +74,13 @@ function fetchCurrentCart () {
 
 document.addEventListener('click', function(e) {
     e.preventDefault()
-    if (e.target.className == "add-to-cart") {
+    if (e.target.className === "add-to-cart") {
         // debugger
         // console.log(e.target.dataset.item)
         // let itemCardDiv = document.getElementById(`item-${e.target.dataset.item}-card`)
         // console.log(itemCardDiv)
         // let cartId = document.getElementById('item-cart-id').innerText
+        e.target.disabled = true
         let itemPath = `http://localhost:3000/items/${e.target.dataset.item}`
         // debugger
         const bodyData = {item: {
@@ -94,24 +97,27 @@ document.addEventListener('click', function(e) {
             })
             .then(response => response.json())
     // optimistically change the shopping bag tally 
-            .then(function() {
+            .then(function(e) {
+                let i = document.getElementsByClassName('card').length
                 let counterTally = parseInt(shoppingCartCounter.innerText)
-                counterTally++
-                shoppingCartCounter.innerText = `${counterTally}`
+                // if e.cart_id != true
+                if (counterTally < i) {
+                    counterTally++
+                    shoppingCartCounter.innerText = `${counterTally}`
+                } else {
+                    alert("You have already added this item to your cart!")
+                }
             })
-            
             // .catch(err => {
             //     console.log(`Error: ${err}`)
             // })
             .catch(() => alert("Can’t access " + itemPath + " response."))
 
-       
-
     }
 })
 
 document.addEventListener('click', function(e) {
-    if (e.target.className == "fas fa-shopping-bag") {
+    if (e.target.className === "fas fa-shopping-bag") {
     let shoppingArea = document.getElementById('shopping-container')
     shoppingArea.innerHTML = " "
     showCurrentCart()
@@ -164,7 +170,39 @@ function renderCartPage(cart) {
 }
 
 document.addEventListener('click', function(e) {
-    if (e.target.className == "return-to-shop") {
+    e.preventDefault()
+    if (e.target.id === "remove-button") {
+        targetItemId = parseInt((e.target.dataset.description).split('-')[1])
+        let removeItemPath = `http://localhost:3000/items/${targetItemId}`
+
+        const bodyData = {item: {
+            cart_id: null
+            }
+          }
+
+            fetch(removeItemPath, {
+                method: 'PATCH',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                  },
+                body: JSON.stringify(bodyData)
+            })
+
+            .then(response => response.json())
+            // .then(function(e) {
+            //     return
+            // })
+            .then(e.target.parentElement.parentElement.remove())
+
+            .catch(err => {
+                console.log(`Error: ${err}`)
+            })
+    }
+})
+
+document.addEventListener('click', function(e) {
+    if (e.target.className === "return-to-shop") {
         // debugger
         let cartArea = document.getElementsByClassName('cart-container')[0]
         cartArea.innerHTML = " "
@@ -172,23 +210,4 @@ document.addEventListener('click', function(e) {
         fetchAllItems()
     }
 })
-
-
-
-
-
-// ADDING TASKS (task lister lite)
-//event listener (for adding list items):
-
-// function createNewTask(e) {
-//     e.preventDefault()
-//     let input = taskDescription;
-//     tasks.innerHTML += `<li>${input.value} <button id="remove-button" data-description="${input.value}">X</button></li>`;
-//     event.target.reset()
-//   }
-// function removeTaskButton(e) {
-//     if ( e.target.id == "remove-button") {
-//       e.target.parentElement.remove();
-//     }
-//   }
 
