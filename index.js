@@ -1,4 +1,4 @@
-// document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
+document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
 const itemUrl = "http://localhost:3000/items"
 const cartUrl = "http://localhost:3000/create-or-return-cart"
 
@@ -75,9 +75,9 @@ document.addEventListener('click', function(e) {
     if (e.target.className == "add-to-cart") {
         // debugger
         // console.log(e.target.dataset.item)
-        let itemCardDiv = document.getElementById(`item-${e.target.dataset.item}-card`)
+        // let itemCardDiv = document.getElementById(`item-${e.target.dataset.item}-card`)
         // console.log(itemCardDiv)
-        let cartId = document.getElementById('item-cart-id').innerText
+        // let cartId = document.getElementById('item-cart-id').innerText
         let itemPath = `http://localhost:3000/items/${e.target.dataset.item}`
         // debugger
         const bodyData = {item: {
@@ -85,7 +85,9 @@ document.addEventListener('click', function(e) {
             }
           }
             fetch(itemPath, {
-                method: "PATCH",
+                // credentials: 'include',
+                // mode: 'cors',
+                method: 'PATCH',
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
@@ -93,8 +95,16 @@ document.addEventListener('click', function(e) {
                 body: JSON.stringify(bodyData)
             })
             .then(response => response.json())
-            // .then
+
+            .then(console.log)
+            
+            // .catch(err => {
+            //     console.log(`Error: ${err}`)
+            // })
             .catch(() => alert("Can’t access " + itemPath + " response."))
+
+       
+// !!!!!!!!!!! need to optimistically change the shopping bag tally 
     }
 })
 
