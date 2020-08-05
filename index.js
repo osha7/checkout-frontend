@@ -18,7 +18,9 @@ const main = document.querySelector('#main')
         <div id="item-card-container"></div>
     </div>
     `
-
+let itemCardContainerDiv = document.getElementById('item-card-container')
+let shoppingCartCounter = document.getElementsByClassName('cart-counter')[0] 
+let shoppingCartId = 0
 // let seePromiseFromFetch = fetch(itemUrl)
 
 document.addEventListener('DOMContentLoaded', fetchAllItems)
@@ -33,16 +35,15 @@ function fetchAllItems() {
         // .then(console.log)
         
         .then(function(json) {
-            json.forEach(addItemCard)
-            // addItemCard(json);
-            // need to .map on this json object
+            json.forEach(function(item){
+                itemCardContainerDiv.innerHTML += addItemCard(item)
+              })
         })
         .catch(() => alert("Can’t access " + itemUrl + " response. Blocked by browser?"))
 }
 
 function addItemCard(item) {
-    let cardContainer = document.getElementById('item-card-container')
-    cardContainer.innerHTML += `
+    return `
         <div id=item-${item.id}-card class="card">
             <img src=${item.img_source} class="item-image"/>
             <h2>${item.name}</h2>
@@ -53,7 +54,7 @@ function addItemCard(item) {
         </div>
     `
 }
-let shoppingCartId = 0
+
 
 function fetchCurrentCart () {
     fetch(cartUrl)
@@ -61,7 +62,6 @@ function fetchCurrentCart () {
         // debugger
         // .then(json => (json))
         .then(function(json) {
-            let shoppingCartCounter = document.getElementsByClassName('cart-counter')[0]
             shoppingCartCounter.innerText = `${json.items.length}`
             shoppingCartId = json.id
         })
@@ -85,8 +85,6 @@ document.addEventListener('click', function(e) {
             }
           }
             fetch(itemPath, {
-                // credentials: 'include',
-                // mode: 'cors',
                 method: 'PATCH',
                 headers: {
                     "Content-Type": "application/json",
@@ -95,8 +93,12 @@ document.addEventListener('click', function(e) {
                 body: JSON.stringify(bodyData)
             })
             .then(response => response.json())
-
-            .then(console.log)
+    // optimistically change the shopping bag tally 
+            .then(function() {
+                let counterTally = parseInt(shoppingCartCounter.innerText)
+                counterTally++
+                shoppingCartCounter.innerText = `${counterTally}`
+            })
             
             // .catch(err => {
             //     console.log(`Error: ${err}`)
@@ -104,11 +106,9 @@ document.addEventListener('click', function(e) {
             .catch(() => alert("Can’t access " + itemPath + " response."))
 
        
-// !!!!!!!!!!! need to optimistically change the shopping bag tally 
+
     }
 })
-
-
 
 document.addEventListener('click', function(e) {
     if (e.target.className == "fas fa-shopping-bag") {
@@ -117,7 +117,6 @@ document.addEventListener('click', function(e) {
     showCurrentCart()
     }
 })
-
 
 const showCurrentCart = function() {
     fetch(cartUrl)
