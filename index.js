@@ -18,7 +18,7 @@ const main = document.querySelector('#main')
         <div id="item-card-container"></div>
     </div>
     `
-    
+
 // let seePromiseFromFetch = fetch(itemUrl)
 
 document.addEventListener('DOMContentLoaded', fetchAllItems)
@@ -49,9 +49,11 @@ function addItemCard(item) {
             <p>Price: $${item.price} - Availability: ${item['item_count']} <br>
                 ${item.description}</p>
             <button class="add-to-cart" data-item=${item.id}>Add Item To Cart</button>
+            <p hidden id="item-cart-id">${item.cart_id}</p>
         </div>
     `
 }
+let shoppingCartId = 0
 
 function fetchCurrentCart () {
     fetch(cartUrl)
@@ -61,6 +63,7 @@ function fetchCurrentCart () {
         .then(function(json) {
             let shoppingCartCounter = document.getElementsByClassName('cart-counter')[0]
             shoppingCartCounter.innerText = `${json.items.length}`
+            shoppingCartId = json.id
         })
         .catch(() => alert("Can’t access " + cartUrl + " response."))
 }
@@ -68,27 +71,30 @@ function fetchCurrentCart () {
 
 
 document.addEventListener('click', function(e) {
+    e.preventDefault()
     if (e.target.className == "add-to-cart") {
-        debugger
+        // debugger
         // console.log(e.target.dataset.item)
-        let itemCard = document.getElementById(`item-${e.target.dataset.item}-card`)
-        // console.log(itemCard)
+        let itemCardDiv = document.getElementById(`item-${e.target.dataset.item}-card`)
+        // console.log(itemCardDiv)
+        let cartId = document.getElementById('item-cart-id').innerText
         let itemPath = `http://localhost:3000/items/${e.target.dataset.item}`
-        function changeCartIdOfItem() {
+        // debugger
+        const bodyData = {item: {
+            cart_id: shoppingCartId
+            }
+          }
             fetch(itemPath, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                   },
-                body: JSON.stringify({
-
-                })
+                body: JSON.stringify(bodyData)
             })
-            .then
-            .then
-            .catch
-        }
+            .then(response => response.json())
+            // .then
+            .catch(() => alert("Can’t access " + itemPath + " response."))
     }
 })
 
@@ -135,7 +141,7 @@ function renderCartPage(cart) {
     `
     let itemsTable = document.getElementById('item-table')
     let cartItemsArray = cart.items
-    cartItemsArray.forEach( item => {
+    cartItemsArray.map( item => {
         itemsTable.innerHTML += `
             <br></br>
             <tr>
