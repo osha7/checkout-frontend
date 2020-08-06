@@ -112,7 +112,8 @@ body {
   }
 
     /* --------CART 'PAGE'---------- */
-    .cart-container  {
+    #cart-container  {
+        display: none;
         top:10%;
         left:50%;
         width:100px;
@@ -126,7 +127,7 @@ body {
         border-radius: 2px;
     }
     
-    .cart-container h1 {
+    #cart-container h1 {
         color:whitesmoke;
         font-size: 28px;
         margin:auto;
