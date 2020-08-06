@@ -23,12 +23,16 @@ const main = document.querySelector('#main')
             <div id="container" class="cart-card-container">
                 <div id="card" class="cart-card">
                     <div class="cart-items">
-                        <table id="item-table" style="width:100%">
+                        <table id="item-table-headers" style="width:100%">
                             <tr style="font-size: 22px; text-decoration: underline;">
                                 <th>Item Name</th>
                                 <th>#</th>
                                 <th>Price</th>
                                 <th></th>
+                            </tr>
+                        </table>
+                        <table id="item-table" style="width:100%">
+                            <tr style="font-size: 22px; text-decoration: underline;">
                             </tr>
                         </table>
                     </div>
@@ -39,7 +43,6 @@ const main = document.querySelector('#main')
             </div>
         </div>
     `
-
 
 let itemCardContainerDiv = document.getElementById('item-card-container')
 let shoppingCartCounter = document.getElementsByClassName('cart-counter')[0] 
@@ -154,14 +157,6 @@ document.addEventListener('click', function(e) {
     }
 })
 
-// document.addEventListener('click', function(e) {
-//     if (e.target.className === "fas fa-shopping-bag") {
-//     let shoppingArea = document.getElementById('shopping-container')
-//     shoppingArea.innerHTML = " "
-//     showCurrentCart()
-//     }
-// })
-
 document.addEventListener('click', function(e) {
     if (e.target.className === "fas fa-shopping-bag") {
         showCart = !showCart
@@ -169,15 +164,6 @@ document.addEventListener('click', function(e) {
             shoppingContainerDiv.style.display = "none";
             showCurrentCart()
             cartContainerDiv.style.display = "block";
-
-            // setTimeout(function() { 
-            //     showCurrentCart()
-            //     cartContainerDiv.style.display = "block"; 
-            // }, 0)
-            
-        // } else {
-        //     cartContainerDiv.style.display = "block";
-        //     shoppingContainerDiv.style.display = "none";
         }
     }
 })
@@ -241,13 +227,9 @@ document.addEventListener('click', function(e) {
         // debugger
         showCart = !showCart
         if (showCart != true) {
+            document.getElementById('item-table').innerHTML = ""
             shoppingContainerDiv.style.display = "block";
-            // let cartContainerDiv = document.getElementsByClassName('cart-container')[0]
             cartContainerDiv.style.display = "none";
-            
-        // } else {
-        //     shoppingContainerDiv.style.display = "block";
-        //     cartContainerDiv.style.display = "none";
         }
     }
 })
