@@ -126,7 +126,8 @@ body {
         /* padding: ; */
         border-radius: 2px;
     }
-    
+    /* outline: none */
+    /* .disabled css */
     #cart-container h1 {
         color:whitesmoke;
         font-size: 28px;

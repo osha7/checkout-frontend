@@ -55,6 +55,7 @@ let shoppingContainerDiv = document.getElementById('shopping-container')
 let cartContainerDiv = document.getElementById('cart-container')
 
 let shoppingCartId = 0
+let cartArrayOfItems = []
 
 // let seePromiseFromFetch = fetch(itemUrl)
 
@@ -109,6 +110,7 @@ function fetchCurrentCart () {
         .then(function(json) {
             shoppingCartCounter.innerText = `${json.items.length}`
             shoppingCartId = json.id
+            cartArrayOfItems = json.items
         })
         .catch(() => alert("Can’t access " + cartUrl + " response."))
 }
@@ -116,11 +118,11 @@ function fetchCurrentCart () {
 document.addEventListener('click', function(e) {
     e.preventDefault()
     if (e.target.className === "add-to-cart") {
+        newArray = cartArrayOfItems.map (item => item.id)
+        if (newArray.includes(parseInt(e.target.dataset.item))) {
+            alert("You already have this item in your cart!")
+        } else {
         // debugger
-        // console.log(e.target.dataset.item)
-        // let itemCardDiv = document.getElementById(`item-${e.target.dataset.item}-card`)
-        // console.log(itemCardDiv)
-        // let cartId = document.getElementById('item-cart-id').innerText
         e.target.disabled = true
         let itemPath = `http://localhost:3000/items/${e.target.dataset.item}`
         // debugger
@@ -142,18 +144,19 @@ document.addEventListener('click', function(e) {
                 let i = document.getElementsByClassName('card').length
                 let counterTally = parseInt(shoppingCartCounter.innerText)
                 // if e.cart_id != true
+                // debugger
                 if (counterTally < i) {
                     counterTally++
                     shoppingCartCounter.innerText = `${counterTally}`
                 } else {
-                    alert("You have already added this item to your cart!")
+                    alert("That was all of the items available for sale!")
                 }
             })
             // .catch(err => {
             //     console.log(`Error: ${err}`)
             // })
             .catch(() => alert("Can’t access " + itemPath + " response."))
-
+        }
     }
 })
 
@@ -184,7 +187,7 @@ function renderCartPage(cart) {
             <br></br>
             <tr>
                 <td>${item.name}</td>
-                <td>${item.quantity}</td>
+                <td>${item.item_count}</td>
                 <td>$${item.price}</td>
                 <td><button id="remove-button" data-description="item-${item.id}" style="font-size: 6px; height: 8px;">X</button></td>
             </tr>
@@ -195,6 +198,10 @@ function renderCartPage(cart) {
 document.addEventListener('click', function(e) {
     e.preventDefault()
     if (e.target.id === "remove-button") {
+        // debugger
+        let counterTally = parseInt(shoppingCartCounter.innerText)
+        counterTally--
+        shoppingCartCounter.innerText = `${counterTally}`
         targetItemId = parseInt((e.target.dataset.description).split('-')[1])
         let removeItemPath = `http://localhost:3000/items/${targetItemId}`
 
