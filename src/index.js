@@ -3,47 +3,12 @@ document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
 const itemUrl = "http://localhost:3000/items"
 const cartUrl = "http://localhost:3000/create-or-return-cart"
 let cA = new cartsAdapter('http://localhost:3000/create-or-return-cart')
+let iA = new itemsAdapter('http://localhost:3000/items')
 
 const main = document.querySelector('#main')
-    main.innerHTML += `
-        <div id="shopping-container">
-            <div id="header-div">
-                <h1>Ware</h1>
-            </div>
-            <div class="shopping-cart-counter">
-                <div class="shopping-cart-image">
-                    <i class="fas fa-shopping-bag" style='font-size:36px'></i>
-                </div>
-                <div class="cart-counter"></div>
-            </div>
-            <div id="add-new-item"></div>
-            <div id="item-card-container"></div>
-        </div>
-        <div id="cart-container">
-            <h1>Cart</h1>
-            <div id="container" class="cart-card-container">
-                <div id="card" class="cart-card">
-                    <div class="cart-items">
-                        <table id="item-table-headers" style="width:100%">
-                            <tr style="font-size: 22px; text-decoration: underline;">
-                                <th>Item Name</th>
-                                <th>#</th>
-                                <th>Price</th>
-                                <th></th>
-                            </tr>
-                        </table>
-                        <table id="item-table" style="width:100%">
-                            <tr style="font-size: 22px; text-decoration: underline;">
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div id="button" class="shop-return">
-            <button class="return-to-shop">Shop</button>
-            </div>
-        </div>
-    `
+    // main.innerHTML += `
+        
+    // `
 
 let itemCardContainerDiv = document.getElementById('item-card-container')
 let shoppingCartCounter = document.getElementsByClassName('cart-counter')[0] 
@@ -60,25 +25,25 @@ let cartArrayOfItems = []
 
 // let seePromiseFromFetch = fetch(itemUrl)
 
-document.addEventListener('DOMContentLoaded', fetchAllItems)
+document.addEventListener('DOMContentLoaded', iA.fetchAllItems)
 document.addEventListener('DOMContentLoaded', fetchCurrentCart)
 
     // debugger
 
-function fetchAllItems() {
-    fetch(itemUrl)
-        .then(function(resp) {
-            return resp.json()
-        })
-        // .then(console.log)
+// function fetchAllItems() {
+//     fetch(itemUrl)
+//         .then(function(resp) {
+//             return resp.json()
+//         })
+//         // .then(console.log)
         
-        .then(function(json) {
-            json.forEach(function(item){
-                itemCardContainerDiv.innerHTML += addItemCard(item)
-              })
-        })
-        .catch(() => alert("Can’t access " + itemUrl + " response. Blocked by browser?"))
-}
+//         .then(function(json) {
+//             json.forEach(function(item){
+//                 itemCardContainerDiv.innerHTML += addItemCard(item)
+//               })
+//         })
+//         .catch(() => alert("Can’t access " + itemUrl + " response. Blocked by browser?"))
+// }
 
 // destructuring ES6:
 
@@ -90,18 +55,18 @@ function fetchAllItems() {
 
 // using destructuring ES6:
 
-function addItemCard({id, img_source, name, price, item_count, description, cart_id}) {
-    return `
-        <div id="item-${id}-card" class="card">
-            <img src=${img_source} class="item-image"/>
-            <h2>${name}</h2>
-            <p>Price: $${price} - Availability: ${item_count} <br>
-                ${description}</p>
-            <button class="add-to-cart" data-item=${id}>Add Item To Cart</button>
-            <p hidden id="item-cart-id">${cart_id}</p>
-        </div>
-    `
-}
+// function addItemCard({id, img_source, name, price, item_count, description, cart_id}) {
+//     return `
+//         <div id="item-${id}-card" class="card">
+//             <img src=${img_source} class="item-image"/>
+//             <h2>${name}</h2>
+//             <p>Price: $${price} - Availability: ${item_count} <br>
+//                 ${description}</p>
+//             <button class="add-to-cart" data-item=${id}>Add Item To Cart</button>
+//             <p hidden id="item-cart-id">${cart_id}</p>
+//         </div>
+//     `
+// }
 
 function fetchCurrentCart () {
     fetch(cartUrl)

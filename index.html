@@ -11,9 +11,48 @@
 
   <body>
     <div id="main">
+      <div id="shopping-container">
+        <div id="header-div">
+            <h1>Ware</h1>
+        </div>
+        <div class="shopping-cart-counter">
+            <div class="shopping-cart-image">
+                <i class="fas fa-shopping-bag" style='font-size:36px'></i>
+            </div>
+            <div class="cart-counter"></div>
+        </div>
+        <div id="add-new-item"></div>
+        <div id="item-card-container"></div>
+      </div>
+      <div id="cart-container">
+          <h1>Cart</h1>
+          <div id="container" class="cart-card-container">
+              <div id="card" class="cart-card">
+                  <div class="cart-items">
+                      <table id="item-table-headers" style="width:100%">
+                          <tr style="font-size: 22px; text-decoration: underline;">
+                              <th>Item Name</th>
+                              <th>#</th>
+                              <th>Price</th>
+                              <th></th>
+                          </tr>
+                      </table>
+                      <table id="item-table" style="width:100%">
+                          <tr style="font-size: 22px; text-decoration: underline;">
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+          </div>
+          <div id="button" class="shop-return">
+          <button class="return-to-shop">Shop</button>
+          </div>
+      </div>
       
     </div>
   </body>
+  <script type="application/javascript" src="src/item.js" charset="UTF-8"></script>
+  <script type="application/javascript" src="src/itemsAdapter.js" charset="UTF-8"></script>
   <script type="application/javascript" src="src/cart.js" charset="UTF-8"></script>
   <script type="application/javascript" src="src/cartsAdapter.js" charset="UTF-8"></script>
   <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>

@@ -15,14 +15,16 @@ class Item {
 
     }
 
-    // render() {
-    //     this.element.innerHTML += `
-    //             <img src=${this.img_source} class="item-image"/>
-    //             <h2>${this.name}</h2>
-    //             <p>Price: $${this.price} - Availability: ${this.item_count} <br>
-    //                 ${this.description}</p>
-    //             <button class="add-to-cart" data-item=${this.id}>Add Item To Cart</button>
-    //             <p hidden id="item-cart-id">${this.cart_id}</p>
-    //     `
-    // }
+    render() {
+        // debugger
+        this.element.innerHTML = `
+                <img src=${this.img_source} class="item-image"/>
+                <h2>${this.name}</h2>
+                <p>Price: $${this.price} - Availability: ${this.item_count} <br>
+                    ${this.description}</p>
+                <button class="add-to-cart" data-item=${this.id}>Add Item To Cart</button>
+                <p hidden id="item-cart-id">${this.cart_id}</p>
+        `
+        return this.element
+    }
 }
