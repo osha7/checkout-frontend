@@ -6,9 +6,6 @@ let cA = new cartsAdapter('http://localhost:3000/create-or-return-cart')
 let iA = new itemsAdapter('http://localhost:3000/items')
 
 const main = document.querySelector('#main')
-    // main.innerHTML += `
-        
-    // `
 
 let itemCardContainerDiv = document.getElementById('item-card-container')
 let shoppingCartCounter = document.getElementsByClassName('cart-counter')[0] 
@@ -28,58 +25,6 @@ let cartArrayOfItems = []
 document.addEventListener('DOMContentLoaded', iA.fetchAllItems)
 document.addEventListener('DOMContentLoaded', fetchCurrentCart)
 
-    // debugger
-
-// function fetchAllItems() {
-//     fetch(itemUrl)
-//         .then(function(resp) {
-//             return resp.json()
-//         })
-//         // .then(console.log)
-        
-//         .then(function(json) {
-//             json.forEach(function(item){
-//                 itemCardContainerDiv.innerHTML += addItemCard(item)
-//               })
-//         })
-//         .catch(() => alert("Can’t access " + itemUrl + " response. Blocked by browser?"))
-// }
-
-// destructuring ES6:
-
-// let itemObj = { 
-//     name: "Jeff",
-// }
-
-// let {name} = itemObj
-
-// using destructuring ES6:
-
-// function addItemCard({id, img_source, name, price, item_count, description, cart_id}) {
-//     return `
-//         <div id="item-${id}-card" class="card">
-//             <img src=${img_source} class="item-image"/>
-//             <h2>${name}</h2>
-//             <p>Price: $${price} - Availability: ${item_count} <br>
-//                 ${description}</p>
-//             <button class="add-to-cart" data-item=${id}>Add Item To Cart</button>
-//             <p hidden id="item-cart-id">${cart_id}</p>
-//         </div>
-//     `
-// }
-
-function fetchCurrentCart () {
-    fetch(cartUrl)
-        .then(resp => resp.json())
-        // debugger
-        // .then(json => (json))
-        .then(function(json) {
-            shoppingCartCounter.innerText = `${json.items.length}`
-            shoppingCartId = json.id
-            cartArrayOfItems = json.items
-        })
-        .catch(() => alert("Can’t access " + cartUrl + " response."))
-}
 
 document.addEventListener('click', function(e) {
     e.preventDefault()

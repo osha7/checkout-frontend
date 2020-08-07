@@ -11,7 +11,6 @@ class itemsAdapter {
         this.addToCartButton = document.getElementsByClassName('add-to-cart')[0]
         this.shoppingContainerDiv = document.getElementById('shopping-container')
 
-        // this.shoppingContainerDiv.addEventListener('DOMContentLoaded', this.fetchAllItems)
         // this.document.addEventListener('click', this.addToCart)
         this.items = []
     }
@@ -96,6 +95,3 @@ class itemsAdapter {
 
     
 }
-
-// let iA = new itemsAdapter('http://localhost:3000/items')
-// iA.fetchAllItems()
