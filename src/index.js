@@ -173,30 +173,6 @@ document.addEventListener('click', function(e) {
     }
 })
 
-// const showCurrentCart = function() {
-//     fetch(cartUrl)
-//         .then(resp => resp.json())
-//         .then(json => renderCartPage(json))
-//         .catch(() => alert("Can’t access " + cartUrl + " response."))
-// }
-
-// function renderCartPage(cart) {
-//     // debugger
-//     let itemsTable = document.getElementById('item-table')
-//     let cartItemsArray = cart.items
-//     cartItemsArray.map( item => {
-//         itemsTable.innerHTML += `
-//             <br></br>
-//             <tr>
-//                 <td>${item.name}</td>
-//                 <td>${item.item_count}</td>
-//                 <td>$${item.price}</td>
-//                 <td><button id="remove-button" data-description="item-${item.id}" style="font-size: 6px; height: 8px;">X</button></td>
-//             </tr>
-//         `
-//     })
-// }
-
 document.addEventListener('click', function(e) {
     e.preventDefault()
     if (e.target.id === "remove-button") {
