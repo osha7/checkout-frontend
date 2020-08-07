@@ -124,6 +124,7 @@ document.addEventListener('click', function(e) {
         } else {
         // debugger
         e.target.disabled = true
+        e.target.innerText = "Item Added To Cart"
         let itemPath = `http://localhost:3000/items/${e.target.dataset.item}`
         // debugger
         const bodyData = {item: {
@@ -161,7 +162,7 @@ document.addEventListener('click', function(e) {
 })
 
 document.addEventListener('click', function(e) {
-    if (e.target.className === "fas fa-shopping-bag") {
+    if (e.target.className === "fas fa-shopping-bag" || e.target.className === "cart-counter") {
         showCart = !showCart
         if (showCart) {
             shoppingContainerDiv.style.display = "none";

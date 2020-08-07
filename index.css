@@ -72,7 +72,7 @@ body {
 
 /* ----------------- */
 #item-card-container {
-    margin: 10rem 2rem;
+    margin: 5rem 2rem;
 }
 
 
@@ -109,7 +109,14 @@ body {
     color: whitesmoke;
     font-size: 12px;
     justify-self: center;
+    outline: black;
   }
+  button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
 
     /* --------CART 'PAGE'---------- */
     #cart-container  {
