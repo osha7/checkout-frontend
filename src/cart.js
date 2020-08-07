@@ -1,5 +1,5 @@
 class Cart {
-    constructor(id, items, quantity, total, sales_tax) {
+    constructor({id, items, quantity, total, sales_tax}) {
         this.id = id
         this.items = items
         this.quantity = quantity
@@ -22,7 +22,7 @@ class Cart {
                     <td><button id="remove-button" data-description="item-${item.id}" style="font-size: 6px; height: 8px;">X</button></td>
                 </tr>
             `
-            return this.element
+            // return this.element
         })
     }
 
