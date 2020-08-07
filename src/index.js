@@ -26,6 +26,19 @@ document.addEventListener('DOMContentLoaded', iA.fetchAllItems)
 document.addEventListener('DOMContentLoaded', fetchCurrentCart)
 
 
+function fetchCurrentCart () {
+    fetch(cartUrl)
+        .then(resp => resp.json())
+        // debugger
+        // .then(json => (json))
+        .then(function(json) {
+            shoppingCartCounter.innerText = `${json.items.length}`
+            shoppingCartId = json.id
+            cartArrayOfItems = json.items
+        })
+        .catch(() => alert("Can’t access " + cartUrl + " response."))
+}
+
 document.addEventListener('click', function(e) {
     e.preventDefault()
     if (e.target.className === "add-to-cart") {
