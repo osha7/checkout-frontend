@@ -1,6 +1,9 @@
 body {
     /* background-image: url("https://images.unsplash.com/photo-1547129607-cb70df5e9b4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"); */
     background-image: url("https://images.unsplash.com/photo-1547499417-61a435d27cb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80");
+    /* background-image: url("https://i.ibb.co/TmxNL1c/moods-color-palettes-01.jpg"); */
+    /* background-image: url("https://i.ibb.co/zR0nB9C/grass-orange.jpg"); */
+    /* background-image: url("https://i.ibb.co/jM4Lbmy/grass-orange3-01.jpg"); */
     /* background-image: url("https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80"); */
 }
 
@@ -72,7 +75,7 @@ body {
 
 /* ----------------- */
 #item-card-container {
-    margin: 5rem 2rem;
+    margin: 10rem 2rem;
 }
 
 

@@ -91,7 +91,7 @@ function fetchAllItems() {
 
 function addItemCard({id, img_source, name, price, item_count, description, cart_id}) {
     return `
-        <div id=item-${id}-card class="card">
+        <div id="item-${id}-card" class="card">
             <img src=${img_source} class="item-image"/>
             <h2>${name}</h2>
             <p>Price: $${price} - Availability: ${item_count} <br>
