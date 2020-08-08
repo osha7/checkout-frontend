@@ -1,6 +1,7 @@
 body {
     /* background-image: url("https://images.unsplash.com/photo-1547129607-cb70df5e9b4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"); */
-    background-image: url("https://images.unsplash.com/photo-1547499417-61a435d27cb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80");
+    /* background-image: url("https://images.unsplash.com/photo-1547499417-61a435d27cb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"); */
+    background-image: url("https://i.ibb.co/8PgYDQX/black-sands.jpg");
     /* background-image: url("https://i.ibb.co/TmxNL1c/moods-color-palettes-01.jpg"); */
     /* background-image: url("https://i.ibb.co/zR0nB9C/grass-orange.jpg"); */
     /* background-image: url("https://i.ibb.co/jM4Lbmy/grass-orange3-01.jpg"); */
@@ -150,12 +151,31 @@ body {
 
 #item-card-container .card .content-div {
   position: absolute;
-  bottom: 25%;
+  bottom: 23%;
   width: 100%;
   height: 100px;
   text-align: center;
   transition: 1s;
   z-index: 10;
+}
+
+#item-card-container .card .content-div h2 {
+  position: relative;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: white;
+}
+
+#item-card-container .card .content-div p {
+  position: relative;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: right;
+  margin-right: 6px;
+  margin-left: 100px;
+  letter-spacing: 1px;
+  color: black;
 }
 
 #item-card-container .card .add-item-button {

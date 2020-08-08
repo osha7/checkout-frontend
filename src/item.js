@@ -23,8 +23,8 @@ class Item {
                 </div>
                 <div class="content-div">
                     <h2>${this.name}</h2>
-                    <p>Price: $${this.price} - Availability: ${this.item_count} <br>
-                        ${this.description}</p>
+                    <p>Price: $${this.price} - Availability: ${this.item_count}</p>
+                    <p>${this.description}</p>
                 </div>
                 <div class="add-item-button">
                     <button class="add-to-cart" data-item=${this.id}>Add Item To Cart</button>
