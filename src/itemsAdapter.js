@@ -24,10 +24,13 @@ class itemsAdapter {
             // .then(console.log)
             
             .then( json => {
+                // debugger
+                this.itemCardContainerDiv.innerHTML = ""
                 json.forEach(itemObj => {
                     let item = new Item(itemObj)
                     this.items.push(item)
                     // debugger
+                    
                     this.itemCardContainerDiv.appendChild(item.render())
                 })
             })

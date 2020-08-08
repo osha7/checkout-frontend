@@ -132,7 +132,7 @@ document.addEventListener('click', function(e) {
 
 document.addEventListener('click', function(e) {
     if (e.target.className === "return-to-shop") {
-        // debugger
+        iA.fetchAllItems()
         showCart = !showCart
         if (showCart != true) {
             document.getElementById('item-table').innerHTML = ""
