@@ -1,11 +1,13 @@
 body {
     /* background-image: url("https://images.unsplash.com/photo-1547129607-cb70df5e9b4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"); */
     /* background-image: url("https://images.unsplash.com/photo-1547499417-61a435d27cb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"); */
-    background-image: url("https://i.ibb.co/8PgYDQX/black-sands.jpg");
+    background-image: url("https://i.ibb.co/WsRKxYt/black-sands-2.jpg");
+    background-size: cover;
     /* background-image: url("https://i.ibb.co/TmxNL1c/moods-color-palettes-01.jpg"); */
     /* background-image: url("https://i.ibb.co/zR0nB9C/grass-orange.jpg"); */
     /* background-image: url("https://i.ibb.co/jM4Lbmy/grass-orange3-01.jpg"); */
     /* background-image: url("https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80"); */
+    font-family: 'EB Garamond', serif;
 }
 
 #header-div {
@@ -38,6 +40,7 @@ body {
     /* background: #723636; */
     padding: 15px;
     right: 0px;
+    
   }
   
   .shopping-cart-image {
@@ -50,6 +53,8 @@ body {
     font-size: 20px;
     /* background: #D58E32; */
     position: relative;
+    background-color: #181818;
+    box-shadow: -2px -2px #626262;
   }
   
   i {
@@ -72,6 +77,7 @@ body {
     font-size: 14px;
     font-weight: bold;
     font-family: sans-serif;
+    
   }
 
 /* ----------------- */
@@ -85,9 +91,9 @@ body {
     /* font-size: 12px; */
     position: relative;
     font-size: 2vw;
-    color: whitesmoke
+    color: whitesmoke;
     text-align: center;
-    border: #8a3324 solid 1px;
+    border: #8a3324 solid 3px;
     border-radius: 5px;
     padding: 1rem;
     width: 260px;
@@ -96,7 +102,7 @@ body {
     margin: 1rem 2rem;
     background: #333333;
     /* whitesmoke: #F5F5F5 */
-    box-shadow: 4px 5px grey;
+    box-shadow: -6px 5px #626262;
     /* overflow: hidden;        doesn't work */
     overflow: hidden;
   }
@@ -164,7 +170,7 @@ body {
   font-weight: 600;
   font-size: 18px;
   letter-spacing: 1px;
-  color: white;
+  color: whitesmoke;
 }
 
 #item-card-container .card .content-div p {
@@ -172,22 +178,40 @@ body {
   font-weight: 600;
   font-size: 12px;
   text-align: right;
+  /* text-shadow: .5px .5px #626262; */
   margin-right: 6px;
   margin-left: 100px;
   letter-spacing: 1px;
-  color: black;
+  color: #626262;
 }
 
 #item-card-container .card .add-item-button {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  height: 65px;
   left: 0;
   text-align: center;
   transition: 1s;
   z-index: 10;
 }
+
+  #item-card-container .card .add-item-button .add-to-cart {
+    position: relative;
+    background-color: #8a3324;
+    border: none;
+    border-radius: 2px;
+    height: 2rem;
+    /* width: max-content; */
+    color: whitesmoke;
+    font-size: 12px;
+    font-family: 'EB Garamond', serif;
+    /* justify-self: center; */
+    outline: black;
+    margin-right: 150px;
+    /* margin-bottom: -50px; */
+  }
+
 
   
   button {
