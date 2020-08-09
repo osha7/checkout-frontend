@@ -30,20 +30,20 @@ class Cart {
             this.priceArray.push(parseInt(`${item.price}`))
             // return this.element
         })
-        if (this.priceArray == []) {
-            this.element2.innerHTML = ""
-            this.element2.innerHTML += `
-                <p>Cart Total: $0.00</p>
-            ` 
-        } else {
-            console.log((this.priceArray).reduce(this.reducer));
-            this.priceReduced = (this.priceArray).reduce(this.reducer) 
+        // if (this.priceArray == []) {
+        //     this.element2.innerHTML = ""
+        //     this.element2.innerHTML += `
+        //         <p>Cart Total: $0.00</p>
+        //     ` 
+        // } else {
+        //     console.log((this.priceArray).reduce(this.reducer));
+        //     this.priceReduced = (this.priceArray).reduce(this.reducer) 
         
-        this.element2.innerHTML = ""
-        this.element2.innerHTML += `
-            <p>Cart Total: $${this.priceReduced}.00</p>
-        `
-        }
+        // this.element2.innerHTML = ""
+        // this.element2.innerHTML += `
+        //     <p>Cart Total: $${this.priceReduced}.00</p>
+        // `
+        // }
     }
 
 }
