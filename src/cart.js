@@ -19,7 +19,7 @@ class Cart {
                     <td>${item.name}</td>
                     <td>${item.item_count}</td>
                     <td>$${item.price}</td>
-                    <td><button id="remove-button" data-description="item-${item.id}" style="font-size: 6px; height: 8px;">X</button></td>
+                    <td><button id="remove-button" class="remove-item" data-description="item-${item.id}" style="font-size: 6px; height: 8px;">X</button></td>
                 </tr>
             `
             // return this.element
