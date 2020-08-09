@@ -122,17 +122,6 @@ body {
 #item-card-container .card:hover:before {
   clip-path: circle(160px at 5% 90%);
 }
-
-/* #item-card-container .card:after {
-  content: 'Ware';
-  position: absolute;
-  bottom: 3%;
-  left: 0%;
-  font-size: 7em;
-  font-weight: 800;
-  font-style: italic;
-  color: rgba (255,255,255,0.04);
-} */
   
 #item-card-container .card .item-image-container .item-image {
   position: absolute;
@@ -145,15 +134,6 @@ body {
     /* border-radius: 2px; */
     /* transition: 0.5s; */
   }
-
-/* #item-card-container .card .item-image-container:hover .item-image {
-  top: 0%;
-  transform: translateY(0%);
-} */
-
-/* #item-card-container .card .item-image-container {
-
-} */
 
 #item-card-container .card .content-div {
   position: absolute;
@@ -178,7 +158,6 @@ body {
   font-weight: 600;
   font-size: 12px;
   text-align: right;
-  /* text-shadow: .5px .5px #626262; */
   margin-right: 6px;
   margin-left: 100px;
   letter-spacing: 1px;
