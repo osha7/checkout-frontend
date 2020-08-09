@@ -4,6 +4,7 @@ const itemUrl = "http://localhost:3000/items"
 const cartUrl = "http://localhost:3000/create-or-return-cart"
 let cA = new cartsAdapter('http://localhost:3000/create-or-return-cart')
 let iA = new itemsAdapter('http://localhost:3000/items')
+let newCart
 
 const main = document.querySelector('#main')
 
@@ -35,6 +36,7 @@ function fetchCurrentCart () {
             shoppingCartCounter.innerText = `${json.items.length}`
             shoppingCartId = json.id
             cartArrayOfItems = json.items
+            newCart = new Cart(json)
         })
         .catch(() => alert("Can’t access " + cartUrl + " response."))
 }
@@ -104,6 +106,7 @@ document.addEventListener('click', function(e) {
         counterTally--
         shoppingCartCounter.innerText = `${counterTally}`
         targetItemId = parseInt((e.target.dataset.description).split('-')[1])
+   
         let removeItemPath = `http://localhost:3000/items/${targetItemId}`
 
         const bodyData = {item: {
@@ -121,13 +124,22 @@ document.addEventListener('click', function(e) {
             })
 
             .then(response => response.json())
+            // .then(json => console.log(json))
             // .then(function(e) {
             //     return
             // })
-            .then(e.target.parentElement.parentElement.remove())
+            .then(() => {
+                // debugger
+                document.querySelector('#cart-total-element').firstElementChild.innerText = (parseInt(document.querySelector('#cart-total-element').firstElementChild.innerText) - parseInt(e.target.parentElement.parentElement.querySelector('.td-price').firstElementChild.innerText))
+                e.target.parentElement.parentElement.remove()
+            })
+            // .then(newCart.renderTotal())
 
             .catch(() => alert("Can’t access " + removeItemPath + " response."))
+            
     }
+    // newCart.renderTotal() 
+    
 })
 
 document.addEventListener('click', function(e) {
