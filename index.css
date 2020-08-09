@@ -1,47 +1,46 @@
 body {
-    /* background-image: url("https://images.unsplash.com/photo-1547129607-cb70df5e9b4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"); */
-    /* background-image: url("https://images.unsplash.com/photo-1547499417-61a435d27cb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"); */
-    background-image: url("https://i.ibb.co/WsRKxYt/black-sands-2.jpg");
-    background-size: cover;
-    /* background-image: url("https://i.ibb.co/TmxNL1c/moods-color-palettes-01.jpg"); */
-    /* background-image: url("https://i.ibb.co/zR0nB9C/grass-orange.jpg"); */
-    /* background-image: url("https://i.ibb.co/jM4Lbmy/grass-orange3-01.jpg"); */
-    /* background-image: url("https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80"); */
-    font-family: 'EB Garamond', serif;
+  /* background-image: url("https://i.ibb.co/TmxNL1c/moods-color-palettes-01.jpg"); */
+  /* background-image: url("https://i.ibb.co/zR0nB9C/grass-orange.jpg"); */
+  /* background-image: url("https://i.ibb.co/jM4Lbmy/grass-orange3-01.jpg"); */
+  background-image: url("https://i.ibb.co/WsRKxYt/black-sands-2.jpg");
+  background-size: cover;
+  font-family: 'EB Garamond', serif;
+  /* background-color: black; */
 }
 
 #header-div {
-    top:10%;
-    left:50%;
-    width:100px;
-    height:50px;
-    color:white;
-    position:absolute;
-    text-align:center;
-    background-color:#8a3324;
-    margin: -25px 0 0 -31px;
+  top:10%;
+  left:42%;
+  width:200px;
+  height:80px;
+  color:white;
+  position:absolute;
+  text-align:center;
+  background-color:#8a3324;
+  margin: -25px 0 0 -31px;
     /* padding: top right bottom left; */
     /* padding: ; */
-    border-radius: 2px;
+  border-radius: 2px;
 }
 
 #header-div h1 {
-    font-size: 28px;
-    margin:auto;
-    line-height:50px;
-    vertical-align:middle;
-    border-radius: 2px;
+  position: relative;
+  font-size: 60px;
+  margin:auto;
+  line-height:75px;
+  vertical-align:middle;
+  border-radius: 2px;
+  justify-self: center;
 }
 /* ----------------- */
 
 .shopping-cart-counter {
-    display: inline-block;
-    position: relative;
+  display: inline-block;
+  position: relative;
     /* background: #723636; */
-    padding: 15px;
-    right: 0px;
-    
-  }
+  padding: 20px;
+  right: 0px;
+}
   
   .shopping-cart-image {
     width: 55px;
@@ -88,35 +87,35 @@ body {
 
 
 #item-card-container .card {
-    /* font-size: 12px; */
-    position: relative;
-    font-size: 2vw;
-    color: whitesmoke;
-    text-align: center;
-    border: #8a3324 solid 3px;
-    border-radius: 5px;
-    padding: 1rem;
-    width: 260px;
-    height: 450px;
-    display: inline-grid;
-    margin: 1rem 2rem;
-    background: #333333;
+  /* font-size: 12px; */
+  position: relative;
+  font-size: 2vw;
+  color: whitesmoke;
+  text-align: center;
+  border: #8a3324 solid 3px;
+  border-radius: 5px;
+  padding: 1rem;
+  width: 260px;
+  height: 450px;
+  display: inline-grid;
+  margin: 1rem 2rem;
+  background: #333333;
     /* whitesmoke: #F5F5F5 */
-    box-shadow: -6px 5px #626262;
+  box-shadow: -6px 5px #626262;
     /* overflow: hidden;        doesn't work */
-    overflow: hidden;
+  overflow: hidden;
   }
 
 #item-card-container .card:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    clip-path: circle(80px at 5% 90%);
-    transition: .5s ease-in-out;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  clip-path: circle(80px at 5% 90%);
+  transition: .5s ease-in-out;
 }
 
 #item-card-container .card:hover:before {
@@ -135,13 +134,13 @@ body {
 } */
   
 #item-card-container .card .item-image-container .item-image {
-    position: absolute;
-    /* justify-self: center; */
-    transform: translateY(-20%);
-    z-index: 10000;
-    height: 20rem;
-    width: 100%;
-    left: 0%;
+  position: absolute;
+  /* justify-self: center; */
+  transform: translateY(-20%);
+  z-index: 10000;
+  height: 20rem;
+  width: 100%;
+  left: 0%;
     /* border-radius: 2px; */
     /* transition: 0.5s; */
   }
@@ -212,6 +211,12 @@ body {
     /* margin-bottom: -50px; */
   }
 
+  #item-card-container .card .add-item-button button:disabled, button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
 
   
   button {
@@ -226,12 +231,7 @@ body {
     justify-self: center;
     outline: black;
   }
-  button:disabled,
-button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-}
+  
 
     /* --------CART 'PAGE'---------- */
     #cart-container  {
