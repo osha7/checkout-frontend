@@ -16,9 +16,9 @@ class Cart {
             this.element.innerHTML += `
                 <br></br>
                 <tr>
-                    <td>${item.name}</td>
-                    <td>${item.item_count}</td>
-                    <td>$${item.price}</td>
+                    <td class="td-name">${item.name}</td>
+                    <td class="td-count">${item.item_count}</td>
+                    <td class="td-price">$${item.price}</td>
                     <td><button id="remove-button" class="remove-item" data-description="item-${item.id}" style="font-size: 6px; height: 8px;">X</button></td>
                 </tr>
             `

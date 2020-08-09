@@ -234,7 +234,7 @@ body {
     #cart-container .cart-header-div {
       position: absolute;
       top: 4%;
-      left: 15%;
+      left: 16%;
       width: 200px;
       height: 80px;
       color: white;
@@ -305,20 +305,70 @@ body {
     outline: black;
     cursor: pointer;
   }
+  .td-name {
+    font-size: 12px;
+    position: relative;
+    left: -10%;
+  }
 
-  #cart-container .cart-card-container button {
-  position: relative;
+  .td-count {
+    font-size: 14px;
+    position: relative;
+    left: -14%;
+  }
+
+  .td-price {
+    font-size: 14px;
+    position: relative;
+    left: -3%;
+  }
+
+/* return to shop button */
+
+  #cart-container .shop-return .return-to-shop {
+    position: relative;
     background-color: #8a3324;
     border: none;
     border-radius: 2px;
-    height: 2rem;
+    height: 3rem;
     width: max-content;
     color: whitesmoke;
-    font-size: 12px;
-    justify-self: center;
+    font-size: 16px;
+    font-family: 'EB Garamond', serif;
+    left: -27%;
     outline: black;
     cursor: pointer;
-    margin: -100px 0 0 -31px;
+    margin-bottom: 6rem;
   }
 
     /* ------------------------- */
+
+    .card-stats {
+      position: relative;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      background: #333333;
+      background-size: cover;
+      font-size: 18px;
+      color: whitesmoke;
+      margin-bottom: -4%;
+      margin-left: -4%;
+      width: 108%;
+      
+      }
+      
+      /* .card-stats .stat {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-direction: column  !important;
+      // color: white  !important;
+      padding:10px  !important;
+      }
+      
+      .card-stats .type{
+      font-size: 11px !important;
+      font-weight: 300  !important;
+      text-transform: uppercase !important;
+      }
+       */
