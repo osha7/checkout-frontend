@@ -7,11 +7,16 @@ class Cart {
         this.sales_tax = sales_tax
 
         this.element = document.getElementById('item-table')
+        this.priceArray = []
+        this.reducer = (accumulator, currentValue) => accumulator + currentValue
 
+        this.element2 = document.getElementById('cart-total')
     }
 
     renderCartPage() {
         let cartItemsArray = this.items
+        // debugger
+        
         cartItemsArray.map( item => {
             this.element.innerHTML += `
                 <br></br>
@@ -22,8 +27,27 @@ class Cart {
                     <td><button id="remove-button" class="remove-item" data-description="item-${item.id}" style="font-size: 6px; height: 8px;">X</button></td>
                 </tr>
             `
+            this.priceArray.push(parseInt(`${item.price}`))
             // return this.element
         })
+        if (this.priceArray == []) {
+            this.element2.innerHTML = ""
+            this.element2.innerHTML += `
+                <p>Cart Total: $0.00</p>
+            ` 
+        } else {
+            console.log((this.priceArray).reduce(this.reducer));
+            this.priceReduced = (this.priceArray).reduce(this.reducer) 
+        
+        this.element2.innerHTML = ""
+        this.element2.innerHTML += `
+            <p>Cart Total: $${this.priceReduced}.00</p>
+        `
+        }
     }
 
 }
+
+
+        // (`${item.price}`)
+       
