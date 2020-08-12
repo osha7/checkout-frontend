@@ -59,7 +59,3 @@ class Cart {
     }
 
 }
-
-
-        // (`${item.price}`)
-       

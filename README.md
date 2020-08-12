@@ -26,6 +26,8 @@ Node.js v12.18.0
 * Database creation
     Postgres
 
+* Project Set-Up/Task Board
+https://trello.com/invite/b/xzinFUVa/711668ce784f1c671460d326bc667b27/proj-4-js-rails
 
 * DrawIO
 https://app.diagrams.net/#G1pMl4AGhUY3uUGSmV8mQZMB7Kq8wm9ZL5
