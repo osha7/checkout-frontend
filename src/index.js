@@ -21,10 +21,30 @@ let cartContainerDiv = document.getElementById('cart-container')
 let shoppingCartId = 0
 let cartArrayOfItems = []
 
+// let sortButtonDiv = document.createElement('div')
+// sortButtonDiv.id = "sort-button-div"
+// sortButtonDiv.innerHTML += '<button class="sort-button">'
+// main.appendChild(sortButtonDiv) 
+
+
 // let seePromiseFromFetch = fetch(itemUrl)
 
-document.addEventListener('DOMContentLoaded', iA.fetchAllItems)
-document.addEventListener('DOMContentLoaded', fetchCurrentCart)
+document.addEventListener('DOMContentLoaded', () => {
+    iA.fetchAllItems()
+    fetchCurrentCart()
+})
+// document.addEventListener('DOMContentLoaded', fetchCurrentCart)
+function newSortedItems () {
+
+    fetch(cartURL)
+    // response
+    .then(response => response.json())
+    // what to do with json
+    .then(json => {
+        debugger
+    })
+}
+
 
 
 function fetchCurrentCart () {
@@ -154,3 +174,26 @@ document.addEventListener('click', function(e) {
         }
     }
 })
+
+
+// chose:
+
+// 1.  thru a fetch request 
+// grab all items 
+// sort by name
+// delete all items on the DOM
+// render this fetch
+
+// 2. search bar
+// event listener reads value 
+// name = exact name of item
+// whole name
+// fetch all items
+// return only item that has exact name
+// delete all DOM
+// push onto DOM
+
+// if no entry in search bar = return all
+
+// not allowed to use stack overflow
+
