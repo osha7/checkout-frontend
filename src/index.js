@@ -1,9 +1,15 @@
 document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
 
-const itemUrl = "http://localhost:3000/items"
-const cartUrl = "http://localhost:3000/create-or-return-cart"
-let cA = new cartsAdapter('http://localhost:3000/create-or-return-cart')
-let iA = new itemsAdapter('http://localhost:3000/items')
+// local environment:
+// baseURL = "http://localhost:3000"
+
+// heroku deployed app:
+baseURL = "https://young-mountain-89222.herokuapp.com"
+
+const itemUrl = baseURL + "/items"
+const cartUrl = baseURL + "/create-or-return-cart"
+let cA = new cartsAdapter(baseURL + '/create-or-return-cart')
+let iA = new itemsAdapter(baseURL + '/items')
 let newCart
 
 const main = document.querySelector('#main')
@@ -34,16 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchCurrentCart()
 })
 // document.addEventListener('DOMContentLoaded', fetchCurrentCart)
-function newSortedItems () {
+// function newSortedItems () {
 
-    fetch(cartURL)
-    // response
-    .then(response => response.json())
-    // what to do with json
-    .then(json => {
-        debugger
-    })
-}
+//     fetch(cartURL)
+//     // response
+//     .then(response => response.json())
+//     // what to do with json
+//     .then(json => {
+//         debugger
+//     })
+// }
 
 
 
@@ -71,7 +77,7 @@ document.addEventListener('click', function(e) {
         // debugger
         e.target.disabled = true
         e.target.innerText = "Item Added To Cart"
-        let itemPath = `http://localhost:3000/items/${e.target.dataset.item}`
+        let itemPath = baseURL + `/items/${e.target.dataset.item}`
         // debugger
         const bodyData = {item: {
             cart_id: shoppingCartId
@@ -127,7 +133,7 @@ document.addEventListener('click', function(e) {
         shoppingCartCounter.innerText = `${counterTally}`
         targetItemId = parseInt((e.target.dataset.description).split('-')[1])
    
-        let removeItemPath = `http://localhost:3000/items/${targetItemId}`
+        let removeItemPath = baseURL + `/items/${targetItemId}`
 
         const bodyData = {item: {
             cart_id: null

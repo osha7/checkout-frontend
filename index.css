@@ -45,6 +45,7 @@ body {
 }
   
   .shopping-cart-image {
+     /* the little black bag top left */
     width: 55px;
     height: 50px;
     border-radius: 3px;
