@@ -374,3 +374,15 @@ body {
       text-transform: uppercase !important;
       }
        */
+
+.preload {
+  display: flex;
+  justify-content: center;
+}
+
+.emoji {
+
+  margin: 0 auto;
+  margin-top: 25%;
+  font-size: 7em;
+}
