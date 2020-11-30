@@ -1,16 +1,36 @@
 document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
 
 // local environment:
-// baseURL = "http://localhost:3000"
+baseURL = "http://localhost:3000"
 
 // heroku deployed app:
-baseURL = "https://young-mountain-89222.herokuapp.com"
+// baseURL = "https://young-mountain-89222.herokuapp.com"
 
 const itemUrl = baseURL + "/items"
 const cartUrl = baseURL + "/create-or-return-cart"
 let cA = new cartsAdapter(baseURL + '/create-or-return-cart')
 let iA = new itemsAdapter(baseURL + '/items')
 let newCart
+
+
+
+const loader = document.querySelector('.preload');
+const emoji = loader.querySelector('.emoji');
+const emojis = ["🕑", "🕐", "🕜","🕝", "🕒", "🕞", "🕓", "🕟", "🕔", "🕠", "🕕", "🕡", "🕖", "🕢",  "🕗", "🕣", "🕘", "🕤", "🕙",  "🕥", "🕚", "🕦",  "🕛", "🕧"];
+const interval = 500;
+
+const loadEmojis = (arr) => {
+    setInterval(() => {
+      emoji.innerText = arr[Math.floor(Math.random() * arr.length)];
+      //console.log(Math.floor(Math.random() * arr.length))
+    }, interval);
+}
+const init = () => {
+    loadEmojis(emojis);
+}
+  
+init();
+
 
 const main = document.querySelector('#main')
 
@@ -36,6 +56,7 @@ let cartArrayOfItems = []
 // let seePromiseFromFetch = fetch(itemUrl)
 
 document.addEventListener('DOMContentLoaded', () => {
+//    debugger
     iA.fetchAllItems()
     fetchCurrentCart()
 })

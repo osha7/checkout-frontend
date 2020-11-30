@@ -44,6 +44,7 @@ class itemsAdapter {
                     
                     this.itemCardContainerDiv.appendChild(item.render())
                 })
+                document.querySelector(".preload").style.display = "none"
             })
             .catch(() => alert("Can’t access " + this.baseURL + " response. Blocked by browser?"))
     }
