@@ -1,10 +1,10 @@
 document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
 
 // local environment:
-baseURL = "http://localhost:3000"
+// baseURL = "http://localhost:3000"
 
 // heroku deployed app:
-// baseURL = "https://young-mountain-89222.herokuapp.com"
+baseURL = "https://young-mountain-89222.herokuapp.com"
 
 const itemUrl = baseURL + "/items"
 const cartUrl = baseURL + "/create-or-return-cart"
